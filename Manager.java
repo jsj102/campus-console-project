@@ -12,7 +12,18 @@ public class Manager {
 	 */
 	public void gugudan() {
 		Scanner sc = new Scanner(System.in);
-		int dan = 0;
+		private int dan = 0;
+		private double[] Num = new double[10];// 계산할 숫자들의 저장배열
+		private char[] Sign = { ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ' };// 계산할 기호들의 저장배열
+		private int countNum = 0;// 계산할 숫자들의 수
+		private int countSign = 0;// 계산할 기호들의 수
+		private double result = 0.;// 결과값의 배열 로 변경했다가 터져서 일단 배열없이하겠습니다.
+		private String str = ""; // 숫자로 변환하기전 문자의 임시저장소
+		private int[] priorityPM = new int[10];// 연산 우선순위를 처리하기위해 +,-의 위치를 기억합니다.
+		private int[] priorityMDM = new int[10];// 연산 우선순위를 처리하기위해 *,/,%의 위치를 기억합니다.
+		private int priorityPMCount = 0;
+		private int priorityMDMCount = 0;
+		private int resultCount = 0;// 계산결과의 총갯수입니다.
 
 		while (true) {
 			try {
@@ -42,84 +53,7 @@ public class Manager {
 		}
 	}
 
-	/**
-	 * 계산기 서비스
-	 */
-//	public void calculator() {
-//		Scanner sc = new Scanner(System.in);
-//		int num = 0;
-//		while (true) {
-//			// 구구단 서비스 메뉴
-//			System.out.println("=======계산기=======");
-//			System.out.println("=======Menu=======");
-//			System.out.println("1.더하기");
-//			System.out.println("2.빼기");
-//			System.out.println("3.곱하기");
-//			System.out.println("4.나누기");
-//			System.out.println("0.종료");
-//
-//			num = sc.nextInt();
-//			if (num == 0) {
-//				System.out.println("종료합니다.");
-//				break;
-//			} else if (num > 4) { // 잘못된 메뉴를 입력할 경우
-//				System.out.println("입력오류! 메뉴를 다시 선택해주세요.");
-//				continue;
-//			}
-//
-//			// 계산할 숫자를 입력
-//			System.out.println("첫 번쨰 숫자를 입력하고 엔터를 눌러주세요.");
-//			int num1 = sc.nextInt();
-//			System.out.println("두 번쨰 숫자를 입력하고 엔터를 눌러주세요.");
-//			int num2 = sc.nextInt();
-//
-//			if (num == 1) { // 더하기
-//				int result1 = num1 + num2;
-//				System.out.println("더하기 결과 : " + result1);
-//				break;
-//			}
-//			if (num == 2) { // 빼기
-//				int result2 = num1 - num2;
-//				System.out.println("뺴기 결과 : " + result2);
-//				break;
-//			}
-//			if (num == 3) { // 곱하기
-//				int result3 = num1 * num2;
-//				System.out.println("곱하기 결과 : " + result3);
-//				break;
-//			}
-//			if (num == 4) { // 나누기
-//				int result4 = num1 / num2;
-//				System.out.println("나누기 몫 : " + result4);
-//				int result5 = num1 % num2;
-//				System.out.println("나누기 나머지 : " + result5);
-//				break;
-//			}
-//		}
-//	}
 
-	
-		private double[] Num = new double[10];// 계산할 숫자들의 저장배열
-		private char[] Sign = { ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ' };// 계산할 기호들의 저장배열
-		private int countNum = 0;// 계산할 숫자들의 수
-		private int countSign = 0;// 계산할 기호들의 수
-		private double result = 0.;// 결과값의 배열 로 변경했다가 터져서 일단 배열없이하겠습니다.
-		private String str = ""; // 숫자로 변환하기전 문자의 임시저장소
-		private int[] priorityPM = new int[10];// 연산 우선순위를 처리하기위해 +,-의 위치를 기억합니다.
-		private int[] priorityMDM = new int[10];// 연산 우선순위를 처리하기위해 *,/,%의 위치를 기억합니다.
-		private int priorityPMCount = 0;
-		private int priorityMDMCount = 0;
-		private int resultCount = 0;// 계산결과의 총갯수입니다.
-
-
-
-	/////////////////////////////////////////////////////////////////////////////////////////////////////
-	/////////                                                                                ////////////
-	/////////                                                                                ////////////
-	/////////                                       계산기 구현부입니다.                           ////////////
-	/////////                                                                                ////////////
-	/////////                                                                                ////////////
-	/////////////////////////////////////////////////////////////////////////////////////////////////////
 		// 계산기 실행부입니다. Main함수 같은 역할입니다.
 		public double calculation(Scanner sc) {
 

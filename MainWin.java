@@ -22,7 +22,7 @@ public class MainWin {
 				manager.gugudan();
 				break;
 			} else if (choice == 2) {
-				manager.calculator();
+				manager.calculation(sc);
 				break;
 			} else if (choice == 3) {
 				System.out.println("종료합니다.");

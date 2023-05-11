@@ -15,6 +15,7 @@ public class MainWin {
 			System.out.println("1. 구구단");
 			System.out.println("2. 계산기");
 			System.out.println("3. 종료");
+			System.out.println("4. 별그리기");
 			System.out.println("선택 : ");
 
 			int choice = sc.nextInt();
@@ -27,6 +28,8 @@ public class MainWin {
 			} else if (choice == 3) {
 				System.out.println("종료합니다.");
 				break;
+			} else if (choice == 4) {
+				manager.methodDotStar();
 			}
 
 		}

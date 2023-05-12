@@ -6,6 +6,7 @@ import java.util.TreeSet;
 public class LottoMaker {
 	private int choice = 0;
 	private int num = 0;
+	private int count = 0;
 	Scanner sc;
 	// ArrayList<TreeSet> mylotto = new ArrayList();
 
@@ -30,7 +31,7 @@ public class LottoMaker {
 				break;
 			} else if (choice == 0) {
 				System.out.println("종료합니다.");
-				// 어떻게 탈출하지.....
+				continue;
 			}
 
 		}
@@ -90,52 +91,70 @@ public class LottoMaker {
 					count++;
 				}
 			}
+			this.setCount(count);
 		}
 	}
 
 	// 로또 번호 6자리를 랜덤으로 생성합니다. 자동로또
 	public void lottoRandom() {
-		TreeSet<Integer> randomLottery = new TreeSet<Integer>(); // treeset을 사용하여 중복없는 값을 입력받습니다.
-		System.out.println("랜덤 로또 번호를 생성합니다.");
-		while (randomLottery.size() < 6) { // 숫자 6개 랜덤 출력
-			int num = (int) (Math.random() * 45 + 1); // math.random을 사용해 1-45까지의 로또 번호 랜덤 출력
-			randomLottery.add(num); // treeset에 값을 저장
+//		TreeSet<Integer> randomLottery = new TreeSet<Integer>(); // treeset을 사용하여 중복없는 값을 입력받습니다.
+//		System.out.println("랜덤 로또 번호를 생성합니다.");
+//		while (randomLottery.size() < 6) { // 숫자 6개 랜덤 출력
+//			int num = (int) (Math.random() * 45 + 1); // math.random을 사용해 1-45까지의 로또 번호 랜덤 출력
+//			randomLottery.add(num); // treeset에 값을 저장
+//		}
+//		System.out.println(randomLottery);
+		
+		// 로또번호를 랜덤으로 추출합니다.
+				int[] userlotto = new int[6]; // 당첨번호 6개를 저장하는 배열
+				for (int i = 0; i < 6; i++) {
+					userlotto[i] = (int) (Math.random() * 45 + 1);
+					for (int j = 0; j < i; j++) { // 중복된 값을 제거해줍니다.
+						if (userlotto[i] == userlotto[j]) {
+							i--;
+							break; // 만약 중복된 값이 추출되면 한 번 더 i를 랜덤으로 생성합니다.
+						}
+					}
+				}
+				Arrays.sort(userlotto); // 당첨번호 오름차순
+				System.out.println("당첨번호");
+				for (int i = 0; i < 6; i++) { // 숫자 6개 출력
+					System.out.println(userlotto[i] + "");
+				}
+		
+
+		// 당첨번호를 랜덤으로 추출합니다.
+		int[] lotto = new int[6]; // 당첨번호 6개를 저장하는 배열
+		for (int i = 0; i < 6; i++) {
+			lotto[i] = (int) (Math.random() * 45 + 1);
+			for (int j = 0; j < i; j++) { // 중복된 값을 제거해줍니다.
+				if (lotto[i] == lotto[j]) {
+					i--;
+					break; // 만약 중복된 값이 추출되면 한 번 더 i를 랜덤으로 생성합니다.
+				}
+			}
 		}
-		System.out.println(randomLottery);
+		Arrays.sort(lotto); // 당첨번호 오름차순
+		System.out.println("당첨번호");
+		for (int i = 0; i < 6; i++) { // 숫자 6개 출력
+			System.out.println(lotto[i] + "");
+		}
+
+		int count = 0;
+		for (int i = 0; i < 6; i++) {
+			for (int j = 0; j < 6; j++) {
+				if (userlotto[i] == lotto[j]) {
+					count++;
+				}
+			}
+			this.setCount(count);
+		}
+
 	}
 
 	// 로또 당첨여부를 확인합니다
-	public void lottoResult() {
-		// 당첨번호를 랜덤으로 추출합니다.
-//		int[] lotto = new int[6]; // 당첨번호 6개를 저장하는 배열
-//		for (int i = 0; i < 6; i++) {
-//			lotto[i] = (int) (Math.random() * 45 + 1);
-//			for (int j = 0; j < i; j++) { // 중복된 값을 제거해줍니다.
-//				if (lotto[i] == lotto[j]) {
-//					i--;
-//					break; // 만약 중복된 값이 추출되면 한 번 더 i를 랜덤으로 생성합니다.
-//				}
-//			}
-//		}
-//		Arrays.sort(lotto); // 당첨번호 오름차순
-//		System.out.println("당첨번호");
-//		for (int i = 0; i < 6; i++) { // 숫자 6개 출력
-//			System.out.println(lotto[i] + "");
-//		}
-
-//		int count=0;
-//		for (int i=0; i<6; i++) {
-//			for (int j=0; j<6; j++) {
-//				if(usernum[i]==lotto[j]) {
-//					count++;
-//				}
-//			}
-//		}
-
-		// 내 번호 불러오기
-// 로또번호 랜덤생성
-		// 로또 당첨여부확인 (오름차순 정리, for로 비교)
-
+	public void lottoResult(int count) {
+		// switch로 count 개수를 세고, 당첨여부를 판단합니다.
 		switch (count) {
 		case 6: {
 			System.out.println("1등 입니다!");
@@ -171,6 +190,14 @@ public class LottoMaker {
 
 	public void setChoice(int choice) {
 		this.choice = choice;
+	}
+
+	public int getCount() {
+		return count;
+	}
+
+	public void setCount(int count) {
+		this.count = count;
 	}
 
 }

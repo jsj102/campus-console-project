@@ -14,7 +14,7 @@ public class Controller {
 			int choice = sc.nextInt();
 			if (choice == 1) { // 게임시작 }
 				System.out.println("당첨결과");
-				lotto.lottoResult();
+				lotto.lottoResult(lotto.getCount());
 				break;
 			}
 

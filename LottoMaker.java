@@ -1,7 +1,6 @@
 import java.util.Arrays;
-import java.util.Random;
 import java.util.Scanner;
-import java.util.TreeSet;
+//import java.util.TreeSet;
 
 public class LottoMaker {
 	private int choice = 0;
@@ -31,7 +30,6 @@ public class LottoMaker {
 				break;
 			} else if (choice == 0) {
 				System.out.println("종료합니다.");
-				continue;
 			}
 
 		}
@@ -84,10 +82,10 @@ public class LottoMaker {
 			System.out.println(lotto[i] + "");
 		}
 
-		int count = 0;
-		for (int i = 0; i < 6; i++) {
+	
+		for (int i = 0; i < 6; i++) { // 숫자 6개 중에
 			for (int j = 0; j < 6; j++) {
-				if (usernum[i] == lotto[j]) {
+				if (usernum[i] == lotto[j]) { // 서로 중복이 존재하면 count 숫자를 1개씩 증가시킵니다.
 					count++;
 				}
 			}
@@ -140,10 +138,10 @@ public class LottoMaker {
 			System.out.println(lotto[i] + "");
 		}
 
-		int count = 0;
-		for (int i = 0; i < 6; i++) {
+	
+		for (int i = 0; i < 6; i++) { // 숫자 6개 중에
 			for (int j = 0; j < 6; j++) {
-				if (userlotto[i] == lotto[j]) {
+				if (userlotto[i] == lotto[j]) { // 서로 중복이 존재하면 count 숫자를 1개씩 증가시킵니다.
 					count++;
 				}
 			}
@@ -175,7 +173,7 @@ public class LottoMaker {
 
 	}
 
-	// get/set 영역입니다.
+	// get/set 영역입니다. >> get/set을 더 공부해봅시다.
 	public int getNum() {
 		return num;
 	}

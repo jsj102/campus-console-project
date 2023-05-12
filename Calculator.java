@@ -8,13 +8,23 @@ public class Calculator {
         char operator;
 
         System.out.println("숫자를 입력하세요:");
-        num1 = scanner.nextDouble();
+        try {
+            num1 = scanner.nextDouble();
+        } catch (Exception e) {
+            System.out.println("숫자를 입력해주세요.");
+            return;
+        }
 
         System.out.println("진행하고자 하는 연산은? (+, -, *, /):");
         operator = scanner.next().charAt(0);
 
         System.out.println("숫자를 하나 더 입력하세요:");
-        num2 = scanner.nextDouble();
+        try {
+            num2 = scanner.nextDouble();
+        } catch (Exception e) {
+            System.out.println("숫자를 입력해주세요.");
+            return;
+        }
 
         switch (operator) {
             case '+':
